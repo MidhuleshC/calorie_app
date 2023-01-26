@@ -12,12 +12,12 @@ import datetime
 
 #view to register user
 class RegisterUserAPIView(generics.CreateAPIView):
-  permission_classes = (AllowAny,)
+  permission_classes = [IsAuthenticated]
   serializer_class = RegisterSerializer
   
 #food view
 class FoodView(viewsets.ModelViewSet):
-    permission_classes = (AllowAny,)
+    permission_classes = [IsAuthenticated]
     def list(self, request):
         queryset = FoodList.objects.all()
         serializer = FoodSerializer(queryset, many=True)
